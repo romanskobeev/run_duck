@@ -266,21 +266,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function adminPopulateForm() {
     const content = adminLoad() || {};
-    document.getElementById('adminTagline').value = content.tagline || document.querySelector('.hero-tagline').textContent;
-    const sh2 = document.querySelector('#schedule h2');
-    document.getElementById('adminScheduleTitle').value = content.scheduleTitle || (sh2 ? sh2.textContent : '');
-    const nh2 = document.querySelector('#news h2');
-    document.getElementById('adminNewsTitle').value = content.newsTitle || (nh2 ? nh2.textContent : '');
-    const hh2 = document.querySelector('#history h2');
-    document.getElementById('adminHistoryTitle').value = content.historyTitle || (hh2 ? hh2.textContent : '');
-    const hp1 = document.querySelector('#history .history-text p:first-child');
-    document.getElementById('adminHistoryP1').value = content.historyP1 || (hp1 ? hp1.textContent : '');
-    const hp2 = document.querySelector('#history .history-text p:last-child');
-    document.getElementById('adminHistoryP2').value = content.historyP2 || (hp2 ? hp2.textContent : '');
-    document.getElementById('adminPhotoTitle').value = content.photoTitle || (document.querySelector('#photo h2') ? document.querySelector('#photo h2').textContent : '');
-    const php = document.querySelector('#photo > p');
-    document.getElementById('adminPhotoText').value = content.photoText || (php ? php.textContent : '');
-    document.getElementById('adminFooter').value = content.footer || (document.querySelector('.footer') ? document.querySelector('.footer').textContent : '');
+    const getText = function(sel) { const e = document.querySelector(sel); return e ? e.textContent : ''; };
+    document.getElementById('adminTagline').value = content.tagline || getText('.hero-tagline');
+    document.getElementById('adminScheduleTitle').value = content.scheduleTitle || getText('#schedule h2');
+    document.getElementById('adminNewsTitle').value = content.newsTitle || getText('#news h2');
+    document.getElementById('adminHistoryTitle').value = content.historyTitle || getText('#history h2');
+    document.getElementById('adminHistoryP1').value = content.historyP1 || getText('#history .history-text p:first-child');
+    document.getElementById('adminHistoryP2').value = content.historyP2 || getText('#history .history-text p:last-child');
+    document.getElementById('adminPhotoTitle').value = content.photoTitle || getText('#photo h2');
+    document.getElementById('adminPhotoText').value = content.photoText || getText('#photo > p');
+    document.getElementById('adminFooter').value = content.footer || getText('.footer');
   }
 
   // apply saved admin content on load
