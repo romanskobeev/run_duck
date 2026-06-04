@@ -244,7 +244,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function adminApplyContent(content) {
     if (!content) return;
-    document.querySelector('.hero-tagline').textContent = content.tagline || document.querySelector('.hero-tagline').textContent;
+    const tagline = document.querySelector('.hero-tagline');
+    if (tagline) tagline.textContent = content.tagline || tagline.textContent;
     const sh2 = document.querySelector('#schedule h2');
     if (sh2) sh2.textContent = content.scheduleTitle || sh2.textContent;
     const nh2 = document.querySelector('#news h2');

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Админ — Бежим с утками</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🦆 Бежим с утками</a>
+    <div class="nav-links">
+      <a href="schedule.html">Расписание</a>
+      <a href="news.html">Новости</a>
+      <a href="history.html">История</a>
+      <a href="photo.html">Фото</a>
+      <a href="profile.html">Профиль</a>
+      <a href="results.html">Результаты</a>
+      <a href="admin.html" class="nav-admin-link">Админ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-section" id="admin">
+  <h2>🔧 Администрирование</h2>
+  <div id="adminLogin">
+    <p>Введите пароль администратора</p>
+    <input type="password" id="adminPass" placeholder="Пароль">
+    <button id="adminLoginBtn" class="btn-download" style="margin-top:10px">Войти</button>
+  </div>
+  <div id="adminPanel" style="display:none">
+    <p class="admin-status">Вы вошли как администратор</p>
+    <div class="admin-grid">
+      <div class="admin-field">
+        <label>Тэглайн (hero)</label>
+        <textarea id="adminTagline" rows="2">Бег с пользой: для себя и для планеты!</textarea>
+      </div>
+      <div class="admin-field">
+        <label>Заголовок расписания</label>
+        <input type="text" id="adminScheduleTitle" value="🏃 Расписание забегов">
+      </div>
+      <div class="admin-field">
+        <label>Заголовок новостей</label>
+        <input type="text" id="adminNewsTitle" value="📰 Новости">
+      </div>
+      <div class="admin-field">
+        <label>Заголовок истории</label>
+        <input type="text" id="adminHistoryTitle" value="🗺️ История района и маршруты">
+      </div>
+      <div class="admin-field">
+        <label>Текст истории (абзац 1)</label>
+        <textarea id="adminHistoryP1" rows="3">Парк Горького — одно из самых живописных мест города. Основанный в XIX веке, он стал излюбленным местом для прогулок и спорта. Широкие аллеи, вековые деревья и набережная создают идеальные условия для бега в любое время года.</textarea>
+      </div>
+      <div class="admin-field">
+        <label>Текст истории (абзац 2)</label>
+        <textarea id="adminHistoryP2" rows="3">Наши маршруты проходят через исторические локации: старый мост, усадьбу купца Смирнова и городской пруд. Каждый забег — это не только спорт, но и знакомство с историей.</textarea>
+      </div>
+      <div class="admin-field">
+        <label>Заголовок фото-секции</label>
+        <input type="text" id="adminPhotoTitle" value="📸 Фото с забега">
+      </div>
+      <div class="admin-field">
+        <label>Текст фото-секции</label>
+        <textarea id="adminPhotoText" rows="2">Вставьте своё фото в кружок и скачайте готовую картинку с символикой забега «Бежим с утками»</textarea>
+      </div>
+      <div class="admin-field">
+        <label>Текст футера</label>
+        <input type="text" id="adminFooter" value="© Бежим с утками">
+      </div>
+    </div>
+    <div class="admin-actions">
+      <button id="adminSaveBtn" class="btn-download">Сохранить изменения</button>
+      <button id="adminLogoutBtn" class="btn-download" style="background:#888">Выйти</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">© Бежим с утками</div>
+
+<script src="script.js"></script>
+</body>
+</html>

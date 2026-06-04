@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Фото — Бежим с утками</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🦆 Бежим с утками</a>
+    <div class="nav-links">
+      <a href="schedule.html">Расписание</a>
+      <a href="news.html">Новости</a>
+      <a href="history.html">История</a>
+      <a href="photo.html">Фото</a>
+      <a href="profile.html">Профиль</a>
+      <a href="results.html">Результаты</a>
+      <a href="admin.html" class="nav-admin-link">Админ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="photo-section" id="photo">
+  <h2>📸 Фото с забега</h2>
+  <p>Вставьте своё фото в кружок и скачайте готовую картинку с символикой забега «Бежим с утками»</p>
+  <div class="photo-upload-area">
+    <div class="photo-circle" id="photoCircle" onclick="document.getElementById('photoInput').click()">
+      <span class="placeholder">+</span>
+      <img id="photoPreview" alt="">
+    </div>
+    <input type="file" id="photoInput" accept="image/*">
+    <button class="btn-download" id="downloadBtn" disabled>Скачать фото</button>
+  </div>
+</div>
+
+<div class="footer">© Бежим с утками</div>
+
+<script src="script.js"></script>
+</body>
+</html>

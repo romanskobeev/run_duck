@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Профиль — Бежим с утками</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🦆 Бежим с утками</a>
+    <div class="nav-links">
+      <a href="schedule.html">Расписание</a>
+      <a href="news.html">Новости</a>
+      <a href="history.html">История</a>
+      <a href="photo.html">Фото</a>
+      <a href="profile.html">Профиль</a>
+      <a href="results.html">Результаты</a>
+      <a href="admin.html" class="nav-admin-link">Админ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="profile-section" id="profile">
+  <h2>👤 Профиль</h2>
+  <div id="profileRegister">
+    <p>Представьтесь, чтобы начать учёт пробежек</p>
+    <input type="text" id="regName" placeholder="Ваше имя">
+    <button id="regBtn" class="btn-download" style="margin-top:10px">Зарегистрироваться</button>
+  </div>
+  <div id="profileDashboard" style="display:none">
+    <h3 id="profileGreeting"></h3>
+    <div class="stats-row">
+      <div class="stat-card"><span class="stat-num" id="statRuns">0</span><br>Пробежек</div>
+      <div class="stat-card"><span class="stat-num" id="statDist">0</span><br>км всего</div>
+      <div class="stat-card"><span class="stat-num" id="statLongest">0</span><br>км макс</div>
+      <div class="stat-card"><span class="stat-num" id="statAvg">0</span><br>км в среднем</div>
+    </div>
+    <div class="profile-two-col">
+      <div class="profile-col">
+        <h4>➕ Добавить пробежку</h4>
+        <input type="date" id="runDate">
+        <input type="number" id="runDist" step="0.1" placeholder="Дистанция (км)">
+        <input type="text" id="runRoute" placeholder="Маршрут">
+        <input type="number" id="runTime" placeholder="Время (мин)">
+        <button id="logRunBtn" class="btn-download" style="margin-top:6px">Записать</button>
+      </div>
+      <div class="profile-col">
+        <h4>📋 Мои пробежки</h4>
+        <div id="runList"><table class="run-table"><thead><tr><th>Дата</th><th>Дистанция</th><th>Маршрут</th><th>Время</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+    <h4>🗺️ Поделиться маршрутом</h4>
+    <input type="text" id="shareRouteName" placeholder="Название маршрута">
+    <input type="text" id="shareRouteDesc" placeholder="Описание">
+    <input type="number" id="shareRouteDist" step="0.1" placeholder="Дистанция (км)">
+    <button id="shareRouteBtn" class="btn-download" style="margin-top:6px">Поделиться</button>
+    <h4>🌍 Маршруты сообщества</h4>
+    <div id="communityRoutes"></div>
+    <button id="resetBtn" class="btn-download" style="margin-top:12px;background:#888">Сбросить данные</button>
+  </div>
+</div>
+
+<div class="footer">© Бежим с утками</div>
+
+<script src="script.js"></script>
+</body>
+</html>

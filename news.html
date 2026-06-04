@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Новости — Бежим с утками</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">🦆 Бежим с утками</a>
+    <div class="nav-links">
+      <a href="schedule.html">Расписание</a>
+      <a href="news.html">Новости</a>
+      <a href="history.html">История</a>
+      <a href="photo.html">Фото</a>
+      <a href="profile.html">Профиль</a>
+      <a href="results.html">Результаты</a>
+      <a href="admin.html" class="nav-admin-link">Админ</a>
+    </div>
+  </div>
+</nav>
+
+<div class="news-section" id="news">
+  <h2>📰 Новости</h2>
+  <div class="carousel-wrap">
+    <button class="carousel-btn carousel-prev" onclick="carouselScroll(-1)">&#8249;</button>
+    <div class="news-carousel" id="newsCarousel">
+      <div class="news-card news-featured">
+        <div class="news-date">4 июня 2026</div>
+        <h3 class="news-title">Фотоконкурс «Бежим с утками»</h3>
+        <p class="news-text">Примите участие в фотоконкурсе! Загрузите своё лучшее фото с забега и выиграйте призы. Итоги — в конце месяца. Подробности в <a href="https://t.me/run_mezd" target="_blank" rel="noopener" class="news-link">нашем Telegram</a>.</p>
+        <img src="photo-contest.jpg" alt="Фотоконкурс" class="news-img">
+      </div>
+      <div class="news-card">
+        <div class="news-date">28 мая 2026</div>
+        <h3 class="news-title">Открытие летнего сезона</h3>
+        <p class="news-text">Стартуем каждую среду и пятницу. Присоединяйтесь к утренним и вечерним забегам!</p>
+      </div>
+      <div class="news-card">
+        <div class="news-date">15 мая 2026</div>
+        <h3 class="news-title">Экологичная акция</h3>
+        <p class="news-text">Собрали 12 мешков мусора на набережной. Спасибо всем участникам заботы о природе!</p>
+      </div>
+      <div class="news-card">
+        <div class="news-date">1 мая 2026</div>
+        <h3 class="news-title">Новый мерч</h3>
+        <p class="news-text">Футболки и бутылки с уткой уже в продаже. Все средства идут на озеленение парков.</p>
+      </div>
+    </div>
+    <button class="carousel-btn carousel-next" onclick="carouselScroll(1)">&#8250;</button>
+  </div>
+</div>
+
+<div class="footer">© Бежим с утками</div>
+
+<script>
+function carouselScroll(dir) {
+  const el = document.getElementById('newsCarousel');
+  const w = el.querySelector('.news-card').offsetWidth + 24;
+  el.scrollBy({ left: dir * w, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
