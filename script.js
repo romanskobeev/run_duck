@@ -22,20 +22,23 @@ const photoCircle = document.getElementById('photoCircle');
 const downloadBtn = document.getElementById('downloadBtn');
 let currentPhoto = null;
 
-photoInput.addEventListener('change', function(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(ev) {
-    currentPhoto = ev.target.result;
-    photoPreview.src = currentPhoto;
-    photoCircle.classList.add('has-photo');
-    downloadBtn.disabled = false;
-  };
-  reader.readAsDataURL(file);
-});
+if (photoInput) {
+  photoInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      currentPhoto = ev.target.result;
+      photoPreview.src = currentPhoto;
+      photoCircle.classList.add('has-photo');
+      downloadBtn.disabled = false;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
-downloadBtn.addEventListener('click', function() {
+if (downloadBtn) {
+  downloadBtn.addEventListener('click', function() {
   if (!currentPhoto) return;
   downloadBtn.classList.add('loading');
   downloadBtn.textContent = 'Обработка...';
@@ -87,7 +90,8 @@ downloadBtn.addEventListener('click', function() {
     userImg.src = currentPhoto;
   };
   bg.src = 'data:image/jpeg;base64,' + brandingB64;
-});
+  });
+}
 
 // === Profile / Run tracking ===
 const STORAGE_KEY = 'runDuckProfile';
@@ -283,45 +287,57 @@ document.addEventListener('DOMContentLoaded', function() {
   if (saved) adminApplyContent(saved);
 
   // check if already logged in
-  if (localStorage.getItem('runDuckAdminLoggedIn') === 'true') {
-    document.getElementById('adminLogin').style.display = 'none';
-    document.getElementById('adminPanel').style.display = 'block';
+  const adminLoginEl = document.getElementById('adminLogin');
+  const adminPanelEl = document.getElementById('adminPanel');
+  if (adminLoginEl && adminPanelEl && localStorage.getItem('runDuckAdminLoggedIn') === 'true') {
+    adminLoginEl.style.display = 'none';
+    adminPanelEl.style.display = 'block';
     adminPopulateForm();
   }
 
-  document.getElementById('adminLoginBtn').addEventListener('click', function() {
-    const pass = document.getElementById('adminPass').value;
-    if (pass === ADMIN_PASS) {
-      localStorage.setItem('runDuckAdminLoggedIn', 'true');
-      document.getElementById('adminLogin').style.display = 'none';
-      document.getElementById('adminPanel').style.display = 'block';
-      adminPopulateForm();
-      document.getElementById('adminPass').value = '';
-    } else {
-      alert('Неверный пароль');
-    }
-  });
+  const adminLoginBtn = document.getElementById('adminLoginBtn');
+  const adminSaveBtn = document.getElementById('adminSaveBtn');
+  const adminLogoutBtn = document.getElementById('adminLogoutBtn');
 
-  document.getElementById('adminSaveBtn').addEventListener('click', function() {
-    const content = {
-      tagline: document.getElementById('adminTagline').value,
-      scheduleTitle: document.getElementById('adminScheduleTitle').value,
-      newsTitle: document.getElementById('adminNewsTitle').value,
-      historyTitle: document.getElementById('adminHistoryTitle').value,
-      historyP1: document.getElementById('adminHistoryP1').value,
-      historyP2: document.getElementById('adminHistoryP2').value,
-      photoTitle: document.getElementById('adminPhotoTitle').value,
-      photoText: document.getElementById('adminPhotoText').value,
-      footer: document.getElementById('adminFooter').value
-    };
-    adminSave(content);
-    adminApplyContent(content);
-    alert('Изменения сохранены');
-  });
+  if (adminLoginBtn) {
+    adminLoginBtn.addEventListener('click', function() {
+      const pass = document.getElementById('adminPass').value;
+      if (pass === ADMIN_PASS) {
+        localStorage.setItem('runDuckAdminLoggedIn', 'true');
+        document.getElementById('adminLogin').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        adminPopulateForm();
+        document.getElementById('adminPass').value = '';
+      } else {
+        alert('Неверный пароль');
+      }
+    });
+  }
 
-  document.getElementById('adminLogoutBtn').addEventListener('click', function() {
-    localStorage.removeItem('runDuckAdminLoggedIn');
-    document.getElementById('adminLogin').style.display = 'block';
-    document.getElementById('adminPanel').style.display = 'none';
-  });
+  if (adminSaveBtn) {
+    adminSaveBtn.addEventListener('click', function() {
+      const content = {
+        tagline: document.getElementById('adminTagline').value,
+        scheduleTitle: document.getElementById('adminScheduleTitle').value,
+        newsTitle: document.getElementById('adminNewsTitle').value,
+        historyTitle: document.getElementById('adminHistoryTitle').value,
+        historyP1: document.getElementById('adminHistoryP1').value,
+        historyP2: document.getElementById('adminHistoryP2').value,
+        photoTitle: document.getElementById('adminPhotoTitle').value,
+        photoText: document.getElementById('adminPhotoText').value,
+        footer: document.getElementById('adminFooter').value
+      };
+      adminSave(content);
+      adminApplyContent(content);
+      alert('Изменения сохранены');
+    });
+  }
+
+  if (adminLogoutBtn) {
+    adminLogoutBtn.addEventListener('click', function() {
+      localStorage.removeItem('runDuckAdminLoggedIn');
+      document.getElementById('adminLogin').style.display = 'block';
+      document.getElementById('adminPanel').style.display = 'none';
+    });
+  }
 });
