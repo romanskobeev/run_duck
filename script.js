@@ -260,10 +260,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (hp1) hp1.textContent = content.historyP1 || hp1.textContent;
     const hp2 = document.querySelector('#history .history-text p:last-child');
     if (hp2) hp2.textContent = content.historyP2 || hp2.textContent;
-    const ph2 = document.querySelector('#photo h2');
-    if (ph2) ph2.textContent = content.photoTitle || ph2.textContent;
-    const php = document.querySelector('#photo > p');
-    if (php) php.textContent = content.photoText || php.textContent;
     const footer = document.querySelector('.footer');
     if (footer) footer.textContent = content.footer || footer.textContent;
   }
@@ -277,8 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('adminHistoryTitle').value = content.historyTitle || getText('#history h2');
     document.getElementById('adminHistoryP1').value = content.historyP1 || getText('#history .history-text p:first-child');
     document.getElementById('adminHistoryP2').value = content.historyP2 || getText('#history .history-text p:last-child');
-    document.getElementById('adminPhotoTitle').value = content.photoTitle || getText('#photo h2');
-    document.getElementById('adminPhotoText').value = content.photoText || getText('#photo > p');
     document.getElementById('adminFooter').value = content.footer || getText('.footer');
   }
 
@@ -323,8 +317,6 @@ document.addEventListener('DOMContentLoaded', function() {
         historyTitle: document.getElementById('adminHistoryTitle').value,
         historyP1: document.getElementById('adminHistoryP1').value,
         historyP2: document.getElementById('adminHistoryP2').value,
-        photoTitle: document.getElementById('adminPhotoTitle').value,
-        photoText: document.getElementById('adminPhotoText').value,
         footer: document.getElementById('adminFooter').value
       };
       adminSave(content);
